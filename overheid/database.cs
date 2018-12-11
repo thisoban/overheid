@@ -1,8 +1,9 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Data;
+
 
 namespace overheid
 {
@@ -23,6 +24,7 @@ namespace overheid
         public string plaats;
         public string telefoonnummer;
         int roleid;
+        int infoid;
         public bool verificatie = false;
 
         //connection
@@ -36,7 +38,7 @@ namespace overheid
 
         public BindingSource source = new BindingSource();
 
-        public void myConnection(string username, string password, string email, string achternaam, string voornaam, string huisnummer)
+        public void register(string username, string password, string email, string achternaam, string voornaam, string huisnummer)
         {
             string Username = username;
             string Password = password;
@@ -49,8 +51,9 @@ namespace overheid
             string Stad = stad;
             string Plaats = plaats;
             string Telefoonnummer = telefoonnummer;
+            int Infoid = infoid;
             int role = 4;
-            string hallo = "INSERT INTO user(user_name, user_pass, )";
+            string hallo = "INSERT INTO user(user_name, user_pass, user`_email, role_id) VALUES (@user_name, _pass, @user_email, role_id)";
             using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
             {
                 string query = "INSERT INTO user( user_name, user_pass, user_mail ) VALUES ( @user_name, @user_pass, user_mail)";
@@ -60,7 +63,7 @@ namespace overheid
                 command.Parameters.Add(new MySqlParameter("@user_pass", Password));
                 command.Parameters.Add(new MySqlParameter("@user_mail", Email));
                 command.Parameters.Add(new MySqlParameter("@role_id", role));
-                command.Parameters.Add(new MySqlParameter("@info_id", role));
+                command.Parameters.Add(new MySqlParameter("@info_id", Infoid));
                 command.Parameters.Add(new MySqlParameter("@info_voornaam", Voornaam));
                 command.Parameters.Add(new MySqlParameter("@info_achternaam", Achternaam));
                 command.Parameters.Add(new MySqlParameter("@info_straatnaam", Straatnaam));

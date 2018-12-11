@@ -1,0 +1,34 @@
+﻿<Window x:Class="overheid.register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:overheid"
+        mc:Ignorable="d"
+        Title="register" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="regristeerBtn" Content="regristeer" HorizontalAlignment="Left" Margin="95,364,0,0" VerticalAlignment="Top" Width="75" Click="RegristeerBtn_Click"/>
+        <Button x:Name="terugBtn" Content="Terug" HorizontalAlignment="Left" Margin="285,359,0,0" VerticalAlignment="Top" Width="75" Click="TerugBtn_Click"/>
+        <Label Content="gebruikersnaam:" HorizontalAlignment="Left" Margin="43,17,0,0" VerticalAlignment="Top"/>
+        <Label Content="wachtwoord:" HorizontalAlignment="Left" Margin="43,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="wachtwoord herhalen:" HorizontalAlignment="Left" Margin="43,84,0,0" VerticalAlignment="Top"/>
+        <Label Content="emailadres:" HorizontalAlignment="Left" Margin="43,115,0,0" VerticalAlignment="Top"/>
+        <Label Content="Voornaam:" HorizontalAlignment="Left" Margin="43,147,0,0" VerticalAlignment="Top"/>
+        <Label Content="Achternaam:" HorizontalAlignment="Left" Margin="43,179,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adres:" HorizontalAlignment="Left" Margin="43,206,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,0.52"/>
+        <Label Content="huisnummer:" HorizontalAlignment="Left" Margin="42,237,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,0.52"/>
+        <Label Content="postcode:" HorizontalAlignment="Left" Margin="42,278,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,0.52"/>
+        <Label Content="plaats:" HorizontalAlignment="Left" Margin="43,309,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,0.52"/>
+        <TextBox x:Name="usernameTxt" HorizontalAlignment="Left" Height="23" Margin="239,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="password1TXT" HorizontalAlignment="Left" Height="23" Margin="239,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="password2TXT" HorizontalAlignment="Left" Height="23" Margin="239,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="emailTXT" HorizontalAlignment="Left" Height="23" Margin="239,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="voornaamTXT" HorizontalAlignment="Left" Height="23" Margin="239,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="achternaamTXT" HorizontalAlignment="Left" Height="23" Margin="239,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="adresTXT" HorizontalAlignment="Left" Height="23" Margin="239,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="huisnummerTXT" HorizontalAlignment="Left" Height="23" Margin="239,247,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="postcodeTXT" HorizontalAlignment="Left" Height="23" Margin="239,281,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+        <TextBox x:Name="plaatsTXT" HorizontalAlignment="Left" Height="23" Margin="239,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="121"/>
+
+    </Grid>
+</Window>

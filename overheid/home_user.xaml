@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="home" Height="450" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="100" Margin="118,122,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="139,35,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="verhuizen" Content="verhuizen" HorizontalAlignment="Left" Margin="39,32,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="gegeven" Content="eigen gegevens" HorizontalAlignment="Left" Margin="645,23,0,0" VerticalAlignment="Top" Width="86" Height="38"/>
 
     </Grid>
 </Window>

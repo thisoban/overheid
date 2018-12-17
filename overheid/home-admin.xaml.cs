@@ -30,8 +30,26 @@ namespace overheid
 
         private void RefreshBtn_Click(object sender, RoutedEventArgs e)
         {
-            user = database.GetUsers();
-            datagridUser.ItemsSource = user;
+            if (datagridUser.ItemsSource == null)
+            {
+                user = database.GetUsers();
+                datagridUser.ItemsSource = user;
+                Console.WriteLine("moet nu eigenlijk wat laten zien");
+            }
+            else
+            {
+                datagridUser.ItemsSource = null;
+                datagridUser.Items.Refresh();
+                user = database.GetUsers();
+                datagridUser.Items.Refresh();
+
+                Console.WriteLine("nu niks meer");
+            }   
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           // verwijder gebruiker
         }
     }
 }

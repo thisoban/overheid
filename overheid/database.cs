@@ -12,6 +12,8 @@ namespace overheid
        
       public  const string MyConnectionString = "SERVER=localhost;DATABASE=gemeente;UID=root;PASSWORD='';";
         MySqlConnection Connection = new MySqlConnection(MyConnectionString);
+        public int MyProperty { get; set; }
+
         public string usernaam;
         public string wachtwoord;
         public string voornaam;
@@ -35,7 +37,9 @@ namespace overheid
 
 
         public BindingSource source = new BindingSource();
-
+        /*
+         * SELECT SCOPE_IDENTITY(); Deze Query functie selecteerd de inserted ID.
+         */
         public void myConnection(string username, string password, string email, string achternaam, string voornaam, string huisnummer)
         {
             string Username = username;
@@ -84,7 +88,7 @@ namespace overheid
             using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
             {
                 conn.Open();
-                string query = "(SELECT * FROM user WHERE user_name = @user_name AND user_pass = @user_pass) ";
+                string query = "(SELECT * FROM user WHERE user_name = @user_name AND user_pass = @user_pass);";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.Add(new MySqlParameter("@user_name", username));
                 command.Parameters.Add(new MySqlParameter("@user_pass", password));

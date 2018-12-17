@@ -37,6 +37,13 @@ namespace overheid
             }
         }
 
+
+       
+
+
+
+
+
         //dit moet je blijven herhalen voor iedere variabele, ik kijk wel mee yuw ik wou al zeggen ik maak ze even XD
         public string InfoVoornaam
         {

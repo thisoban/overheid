@@ -53,26 +53,33 @@ namespace overheid
             string Telefoonnummer = telefoonnummer;
             int Infoid = infoid;
             int role = 4;
-            string hallo = "INSERT INTO user(user_name, user_pass, user`_email, role_id) VALUES (@user_name, _pass, @user_email, role_id)";
+          
             using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
             {
-                string query = "INSERT INTO user( user_name, user_pass, user_mail ) VALUES ( @user_name, @user_pass, user_mail)";
+
+                string hallo = "INSERT INTO info(info_id, info_voornaam, info_achternaam, info_adres, info_huisnummer, info_[pstcpde, info_plaats) VALUES (@info_id, _pass, @info_achternaam, @info_straatnaam, @info_huisnummer,@info_postcode,@info_plaats,  LAST_INSERT_ID()) ";
+                string query = "INSERT INTO user( user_name, user_pass, user_mail, role_id, info_id ) VALUES ( @user_name, @user_pass, @user_mail)";
                 conn.Open();
+                MySqlCommand cmd = new MySqlCommand(hallo, conn);
+                cmd.Parameters.Add(new MySqlParameter("@info_id", Infoid));
+                cmd.Parameters.Add(new MySqlParameter("@info_voornaam", Voornaam));
+                cmd.Parameters.Add(new MySqlParameter("@info_achternaam", Achternaam));
+                cmd.Parameters.Add(new MySqlParameter("@info_straatnaam", Straatnaam));
+                cmd.Parameters.Add(new MySqlParameter("@info_huisnummer", Huisnum));
+                cmd.Parameters.Add(new MySqlParameter("@info_postcode", Postcode));
+                cmd.Parameters.Add(new MySqlParameter("@info_plaats", Plaats));
+             
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.Add(new MySqlParameter("@user_name", Username));
                 command.Parameters.Add(new MySqlParameter("@user_pass", Password));
                 command.Parameters.Add(new MySqlParameter("@user_mail", Email));
                 command.Parameters.Add(new MySqlParameter("@role_id", role));
-                command.Parameters.Add(new MySqlParameter("@info_id", Infoid));
-                command.Parameters.Add(new MySqlParameter("@info_voornaam", Voornaam));
-                command.Parameters.Add(new MySqlParameter("@info_achternaam", Achternaam));
-                command.Parameters.Add(new MySqlParameter("@info_straatnaam", Straatnaam));
-                command.Parameters.Add(new MySqlParameter("@info_huisnummer", Huisnum));
-                command.Parameters.Add(new MySqlParameter("@info_postcode", Postcode));
-                command.Parameters.Add(new MySqlParameter("@info_plaats", Plaats));
+              
                 command.ExecuteNonQuery();
                 //gebruik inner join om de rest van de gegevens te regristeren dus plaats etc
                 conn.Close();
+
+              
 
             }
 

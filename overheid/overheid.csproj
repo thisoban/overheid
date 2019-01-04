@@ -61,6 +61,7 @@
       <DependentUpon>register.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="userlogincache.cs" />
     <Page Include="home-admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

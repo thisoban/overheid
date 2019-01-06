@@ -22,6 +22,17 @@ namespace overheid
         public home()
         {
             InitializeComponent();
+
+            Console.WriteLine("ik geef weer");
+        }
+        
+
+        private void Verhuizing_aanvragen_Click(object sender, RoutedEventArgs e)
+        {
+            verhuizing verhuizing = new verhuizing();
+            verhuizing.Show();
+            Close();
+
         }
     }
 }

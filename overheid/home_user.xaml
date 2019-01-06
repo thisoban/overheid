@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:overheid"
         mc:Ignorable="d"
-        Title="home" Height="450" Width="800">
+        Title="home" Height="195" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="100" Margin="118,122,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="139,35,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="213*"/>
+            <ColumnDefinition Width="580*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="verhuizing_aanvragen" Content="verhuizing aanvragen" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="203" Click="Verhuizing_aanvragen_Click" Height="120"/>
+        <Button x:Name="uitloggenBtn" Content="uitloggen" HorizontalAlignment="Left" Margin="428.833,10,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button x:Name="gegevensBtn" Content="eigen gegevens" HorizontalAlignment="Left" Margin="34.667,10,0,0" VerticalAlignment="Top" Width="237" Height="120" Grid.Column="1"/>
 
     </Grid>
 </Window>

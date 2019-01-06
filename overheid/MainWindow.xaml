@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="usernameTxt" HorizontalAlignment="Left" Height="23" Margin="304,127,0,0" TextWrapping="Wrap" Text="adminnaam" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="passwordTxt" HorizontalAlignment="Left" Height="23" Margin="304,187,0,0" TextWrapping="Wrap" Text="adminpass" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="usernameTxt" HorizontalAlignment="Left" Height="23" Margin="304,127,0,0" TextWrapping="Wrap" Text="thisoban" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="passwordTxt" HorizontalAlignment="Left" Height="23" Margin="304,187,0,0" TextWrapping="Wrap" Text="wachtwoord" VerticalAlignment="Top" Width="120"/>
         <Label Content="gebruikersnaam: " HorizontalAlignment="Left" Margin="168,123,0,0" VerticalAlignment="Top"/>
         <Label Content="wachtwoord: " HorizontalAlignment="Left" Margin="168,183,0,0" VerticalAlignment="Top"/>
         <Button x:Name="loginBtn" Content="inloggen" HorizontalAlignment="Left" Margin="168,255,0,0" VerticalAlignment="Top" Width="101" Click="LoginBtn_Click"/>

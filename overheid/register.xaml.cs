@@ -39,10 +39,21 @@ namespace overheid
             string email = emailTXT.Text;
             string voornaam = voornaamTXT.Text;
             string achternaam = achternaamTXT.Text;
-            string adres = adresTXT.Text;
+            string straatnaam = adresTXT.Text;
             int huisnummer = Convert.ToInt32(huisnummerTXT.Text);
             string postcode = postcodeTXT.Text;
             string plaats = plaatsTXT.Text;
+            database regristeren = new database();
+            if (password == password2)
+            {
+                regristeren.register(username, password, email, voornaam, achternaam, straatnaam, huisnummer, postcode, plaats);
+            }
+            else
+            {
+                MessageBox.Show("wachtwoord niet ingevuld");
+            }
+
+            
 
         }
     }

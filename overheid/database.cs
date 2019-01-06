@@ -9,10 +9,9 @@ namespace overheid
 {
     class database
     {
-
-       
-      public  const string MyConnectionString = "SERVER=localhost;DATABASE=gemeente;UID=root;PASSWORD='';";
+        public  const string MyConnectionString = "SERVER=localhost;DATABASE=gemeente;UID=root;PASSWORD='';";
         MySqlConnection Connection = new MySqlConnection(MyConnectionString);
+        public int userid;
         public string usernaam;
         public string wachtwoord;
         public string voornaam;
@@ -23,8 +22,8 @@ namespace overheid
         public string stad;
         public string plaats;
         public string telefoonnummer;
-        int roleid;
-        int infoid;
+        public int roleid;
+        public int Infoid;
         public bool verificatie = false;
 
         //connection
@@ -35,10 +34,10 @@ namespace overheid
 
         // delete
 
+        
+       
 
-        public BindingSource source = new BindingSource();
-
-        public void register(string username, string password, string email, string achternaam, string voornaam, string huisnummer)
+        public void register(string username, string password, string email,  string voornaam, string achternaam,string straatnaam,  int huisnummer, string postcode , string plaats)
         {
             string Username = username;
             string Password = password;
@@ -46,42 +45,51 @@ namespace overheid
             string Voornaam = voornaam;
             string Achternaam = achternaam;
             string Straatnaam = straatnaam;
-            string Huisnum = huisnummer;
+            int Huisnum = huisnummer;
             string Postcode = postcode;
-            string Stad = stad;
             string Plaats = plaats;
             string Telefoonnummer = telefoonnummer;
-            int Infoid = infoid;
+     
             int role = 4;
           
             using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
             {
 
-                string hallo = "INSERT INTO info(info_id, info_voornaam, info_achternaam, info_adres, info_huisnummer, info_[pstcpde, info_plaats) VALUES (@info_id, _pass, @info_achternaam, @info_straatnaam, @info_huisnummer,@info_postcode,@info_plaats,  LAST_INSERT_ID()) ";
-                string query = "INSERT INTO user( user_name, user_pass, user_mail, role_id, info_id ) VALUES ( @user_name, @user_pass, @user_mail)";
+                string query = "INSERT INTO `info` (`info_voornaam`,  `info_achternaam`, `info_adres`, `info_huisnummer`, `info_postcode`, `info_plaats`) VALUES ( @info_voornaam, @info_achternaam, @info_straatnaam, @info_huisnummer, @info_postcode, @info_plaats )";
+                string query2 = "INSERT INTO `user`( `user_name`, `user_pass`, `user_email`, `role_id`, `info_id` ) VALUES ( @user_name, @user_pass, @user_email, @role_id , @info_id)";
+                string query3 = "SELECT info_id FROM info WHERE info_id = (SELECT MAX(info_id) FROM info)";       
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(hallo, conn);
-                cmd.Parameters.Add(new MySqlParameter("@info_id", Infoid));
+                MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.Add(new MySqlParameter("@info_voornaam", Voornaam));
                 cmd.Parameters.Add(new MySqlParameter("@info_achternaam", Achternaam));
                 cmd.Parameters.Add(new MySqlParameter("@info_straatnaam", Straatnaam));
                 cmd.Parameters.Add(new MySqlParameter("@info_huisnummer", Huisnum));
                 cmd.Parameters.Add(new MySqlParameter("@info_postcode", Postcode));
                 cmd.Parameters.Add(new MySqlParameter("@info_plaats", Plaats));
-             
-                MySqlCommand command = new MySqlCommand(query, conn);
-                command.Parameters.Add(new MySqlParameter("@user_name", Username));
-                command.Parameters.Add(new MySqlParameter("@user_pass", Password));
-                command.Parameters.Add(new MySqlParameter("@user_mail", Email));
-                command.Parameters.Add(new MySqlParameter("@role_id", role));
-              
-                command.ExecuteNonQuery();
-                //gebruik inner join om de rest van de gegevens te regristeren dus plaats etc
+                cmd.ExecuteNonQuery();
+                MySqlCommand op = new MySqlCommand(query3, conn);
+                MySqlDataReader info = op.ExecuteReader();
+                while (info.Read()){
+                    Infoid = info.GetInt32("info_id");
+                    Console.WriteLine(Infoid);
+                   
+                }
+                info.Close();
+
+                if (Infoid == Infoid){
+                    MySqlCommand command = new MySqlCommand(query2, conn);
+                    command.Parameters.Add(new MySqlParameter("@user_name", Username));
+                    command.Parameters.Add(new MySqlParameter("@user_pass", Password));
+                    command.Parameters.Add(new MySqlParameter("@user_email", Email));
+                    command.Parameters.Add(new MySqlParameter("@role_id", role));
+                    command.Parameters.Add(new MySqlParameter("@info_id", Infoid));
+
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
                 conn.Close();
-
-              
-
             }
+
 
         }
 
@@ -89,8 +97,8 @@ namespace overheid
 
         public void LoginUser(string username, string password)
         {
-            home_admin home = new home_admin();
-
+            home_admin admin = new home_admin();
+            home gebruiker = new home();
             using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
             {
                 conn.Open();
@@ -98,14 +106,19 @@ namespace overheid
                 MySqlCommand command = new MySqlCommand(query, conn);
                 command.Parameters.Add(new MySqlParameter("@user_name", username));
                 command.Parameters.Add(new MySqlParameter("@user_pass", password));
+
+                
+
                 MySqlDataReader login = command.ExecuteReader();
                 while (login.Read())
                 {
                     usernaam = login.GetString("user_name");
                     wachtwoord = login.GetString("user_pass");
-                    int roleid = login.GetInt32("role_id");
-                    Console.WriteLine(roleid);
-
+                    userid = login.GetInt32("user_id");
+                    roleid = login.GetInt32("role_id");
+                    Infoid = login.GetInt32("info_id");
+                    Person.userid = userid;
+                    Person.infoid = Infoid;  
                 }
                 if (usernaam == username)
                 {
@@ -113,45 +126,41 @@ namespace overheid
                     if (wachtwoord == password)
                     {
                         Console.WriteLine(" het wachtwoord klopt");
-
-                        verificatie = true;
-
-
-                    }
-                    if (roleid == 1)
-                    {
-                       
-                        home.Show();
-                        Console.WriteLine("admin");
-                    }
-                    if (roleid == 2)
-                    {
-                        Console.WriteLine("gemeente");
-                    }
-                    if (roleid == 3)
-                    {
-                        Console.WriteLine("woonstichting");
-                    }
-                    if (roleid == 4)
-                    {
-                        Console.WriteLine("huurder");
-                    }
-                    else
-                    {
-                        home.Show();
-                    }
+                    }     
                 }
-                
-                else
+                 else
                 {
                     MessageBox.Show("De ingevoerde gegevens kloppen niet");
                 }
+                if (roleid == 1)
+                {
+                    admin.Show();
+                    Console.WriteLine("admin");
+                    verificatie = true;
+                }
+                if (roleid == 2)
+                {
 
+                    Console.WriteLine("gemeente");
+                    verificatie = true;
+                }
+                if (roleid == 3)
+                {
+                    Console.WriteLine("woonstichting");
+                    verificatie = true;
+                }
+                if (roleid == 4)
+                {
+                    gebruiker.Show();
+                    Console.WriteLine("huurder");
+                    verificatie = true;
+                }
             }
         }
 
         public List<User> GetUsers()
         {
+
             List<User> userlist = new List<User>();
             string sql = "SELECT user.user_id, user.user_name, user.user_pass, user.user_email, user.role_id, user.info_id, info.info_id, info.info_voornaam, info.info_achternaam, info.info_adres, info.info_huisnummer, info.info_postcode, info.info_plaats FROM `user` INNER JOIN info on user.info_id = info.info_id;";
             Connection.Open();

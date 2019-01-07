@@ -23,7 +23,14 @@ namespace overheid
         int roleID;
         
         string query = "SELECT * FROM user INNER JOIN ";
-        
+        private int myVar;
+
+        public int MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
+
         //dit worden echt tering veel fields
         public int InfoID
         {

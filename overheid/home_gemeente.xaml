@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="home_gemeente" Height="450" Width="800">
     <Grid>
-        <Button x:Name="uitloggen" Content="uitloggen" HorizontalAlignment="Left" Margin="619,40,0,0" VerticalAlignment="Top" Width="75"/>
-        <DataGrid HorizontalAlignment="Left" Height="146" Margin="48,70,0,0" VerticalAlignment="Top" Width="462"/>
-        <Button x:Name="goedkeurenBtn" Content="Button" HorizontalAlignment="Left" Margin="563,106,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="afkeurenBtn" Content="Button" HorizontalAlignment="Left" Margin="563,174,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="logoutBtn" Content="uitloggen" HorizontalAlignment="Left" Margin="682,10,0,0" VerticalAlignment="Top" Width="83" Height="35"/>
+        <DataGrid HorizontalAlignment="Left" Height="256" Margin="10,94,0,0" VerticalAlignment="Top" Width="755"/>
+        <Button x:Name="toestaanBtn" Content="Button" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="98" Height="37"/>
+        <Button x:Name="nottoestaanBtn" Content="Button" HorizontalAlignment="Left" Margin="162,30,0,0" VerticalAlignment="Top" Width="95" Height="37"/>
 
     </Grid>
 </Window>

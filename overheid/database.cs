@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 using System.Data;
 
 
@@ -189,7 +189,7 @@ namespace overheid
                     user.UserPass = reader.GetString("user_pass");
                     user.Usermail = reader.GetString("user_email");
                     user.RoleID = reader.GetInt32("role_id");
-
+                    
                     // save uitlening to the list
                     userlist.Add(user);
 

@@ -48,12 +48,7 @@ namespace overheid
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (datagridUser.SelectedIndex >= 0)
-            {
-                TextBlock rowID = datagridUser.Columns[0].GetCellContent(datagridUser.Items[datagridUser.SelectedIndex]) as TextBlock;
-
-            }
-
+            
 
 
         }

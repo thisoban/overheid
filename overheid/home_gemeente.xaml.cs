@@ -29,17 +29,11 @@ namespace overheid
         {
             this.Close();
         }
+        List<huurder> GetHuur = new List<huurder>();
+        exchange exchange = new exchange();
 
         private void VernieuwenBtn_Click(object sender, RoutedEventArgs e)
         {
-           
-            List<huurder> GetHuur = new List<huurder>();
-            exchange exchange = new exchange();
-            
-
-
-
-
             //datagrid1.ItemsSource();
             if (datagrid1.ItemsSource == null)
             {
@@ -49,9 +43,8 @@ namespace overheid
             }
             else
             {
-                datagrid1.Items.Refresh();
-                GetHuur = exchange.GetHuur();
-                datagrid1.Items.Refresh();
+                datagrid1.ItemsSource = null;
+                datagrid1.ItemsSource = GetHuur;
 
                 Console.WriteLine("nu niks meer");
             }
@@ -62,7 +55,8 @@ namespace overheid
             if (datagrid1.SelectedIndex >= 0)
             {
                 TextBlock rowID = datagrid1.Columns[0].GetCellContent(datagrid1.Items[datagrid1.SelectedIndex]) as TextBlock;
-
+                int rowid = Convert.ToInt32(rowID.Text);
+                exchange.toegestaan(rowid);
             }
         }
     }

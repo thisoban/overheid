@@ -97,9 +97,25 @@ namespace overheid
         }
         public void toegestaan(int Rowid)
         {
+            string confirm = "toegestaangemeente";
             int rowid = Rowid;
 
+            using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
+            {
+                string query = "UPDATE `inschrijving` SET `inschrijf_status`= @inschrijf_status WHERE inschrijf_id = @inschrijf_id";
 
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.Add(new MySqlParameter("@inschrijf_id", rowid));
+                cmd.Parameters.Add(new MySqlParameter("@inschrijf_status", confirm));
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("vernieuw de pagina");
+            }
         }
+
+        string query = "SELECT * FROM `inschrijving`  GROUP BY inschrijf_id DESC ";
+
     }
 }

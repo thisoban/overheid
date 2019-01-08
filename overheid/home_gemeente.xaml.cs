@@ -22,6 +22,48 @@ namespace overheid
         public home_gemeente()
         {
             InitializeComponent();
+           
+        }
+        
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void VernieuwenBtn_Click(object sender, RoutedEventArgs e)
+        {
+           
+            List<huurder> GetHuur = new List<huurder>();
+            exchange exchange = new exchange();
+            
+
+
+
+
+            //datagrid1.ItemsSource();
+            if (datagrid1.ItemsSource == null)
+            {
+                GetHuur = exchange.GetHuur();
+                datagrid1.ItemsSource = GetHuur;
+                Console.WriteLine("moet nu eigenlijk wat laten zien");
+            }
+            else
+            {
+                datagrid1.Items.Refresh();
+                GetHuur = exchange.GetHuur();
+                datagrid1.Items.Refresh();
+
+                Console.WriteLine("nu niks meer");
+            }
+        }
+
+        private void ToestaanBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (datagrid1.SelectedIndex >= 0)
+            {
+                TextBlock rowID = datagrid1.Columns[0].GetCellContent(datagrid1.Items[datagrid1.SelectedIndex]) as TextBlock;
+
+            }
         }
     }
 }

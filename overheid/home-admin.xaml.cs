@@ -38,7 +38,6 @@ namespace overheid
             }
             else
             {
-                datagridUser.ItemsSource = null;
                 datagridUser.Items.Refresh();
                 user = database.GetUsers();
                 datagridUser.Items.Refresh();
@@ -49,7 +48,14 @@ namespace overheid
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           // verwijder gebruiker
+            if (datagridUser.SelectedIndex >= 0)
+            {
+                TextBlock rowID = datagridUser.Columns[0].GetCellContent(datagridUser.Items[datagridUser.SelectedIndex]) as TextBlock;
+
+            }
+
+
+
         }
     }
 }

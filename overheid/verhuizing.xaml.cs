@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace overheid
 {
-    /// <summary>
-    /// Interaction logic for verhuizing.xaml
-    /// </summary>
+   
     public partial class verhuizing : Window
     {
         public verhuizing()
@@ -26,7 +24,6 @@ namespace overheid
         home home = new home();
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-          
             home.Show();
             this.Close();
         }

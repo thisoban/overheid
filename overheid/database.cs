@@ -99,6 +99,7 @@ namespace overheid
         {
             home_admin admin = new home_admin();
             home gebruiker = new home();
+            home_gemeente gemeente = new home_gemeente();
             using (MySqlConnection conn = new MySqlConnection(MyConnectionString))
             {
                 conn.Open();
@@ -140,7 +141,8 @@ namespace overheid
                 }
                 if (roleid == 2)
                 {
-
+                   
+                    gemeente.Show();
                     Console.WriteLine("gemeente");
                     verificatie = true;
                 }
@@ -160,7 +162,6 @@ namespace overheid
 
         public List<User> GetUsers()
         {
-
             List<User> userlist = new List<User>();
             string sql = "SELECT user.user_id, user.user_name, user.user_pass, user.user_email, user.role_id, user.info_id, info.info_id, info.info_voornaam, info.info_achternaam, info.info_adres, info.info_huisnummer, info.info_postcode, info.info_plaats FROM `user` INNER JOIN info on user.info_id = info.info_id;";
             Connection.Open();
@@ -177,6 +178,11 @@ namespace overheid
                     User user = new User();
 
                     //add value to the fields
+                    user.UserId = reader.GetInt32("user_id");
+                    user.UserName = reader.GetString("user_name");
+                    user.UserPass = reader.GetString("user_pass");
+                    user.Usermail = reader.GetString("user_email");
+                    user.RoleID = reader.GetInt32("role_id");
                     user.InfoID = reader.GetInt32("info_id");
                     user.InfoVoornaam = reader.GetString("info_voornaam");
                     user.InfoAchternaam = reader.GetString("info_achternaam");
@@ -184,11 +190,7 @@ namespace overheid
                     user.Infohuisnum = reader.GetInt32("info_huisnummer");
                     user.InfoPostcode = reader.GetString("info_postcode");
                     user.InfoPlaats = reader.GetString("info_plaats");
-                    user.UserId = reader.GetInt32("user_id");
-                    user.UserName = reader.GetString("user_name");
-                    user.UserPass = reader.GetString("user_pass");
-                    user.Usermail = reader.GetString("user_email");
-                    user.RoleID = reader.GetInt32("role_id");
+                
                     
                     // save uitlening to the list
                     userlist.Add(user);
@@ -204,25 +206,6 @@ namespace overheid
             return userlist;
         }
 
-       
-        public void user()
-        {
-           
-            List<string> user = new List<string>();
-             
-
-            Connection.Open();
-
-            string gebruiker = "SELECT * FROM user";
-            MySqlCommand cmd = new MySqlCommand(gebruiker, Connection);
-            MySqlDataReader read = cmd.ExecuteReader();
-            while (read.Read())
-            {
-
-            }
-
-            Connection.Close();
-        }
-
+        
     }
 }

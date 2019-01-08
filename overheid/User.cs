@@ -8,6 +8,11 @@ namespace overheid
 {
     class User
     {
+        int userId;
+        string userName;
+        string userPass;
+        string userMail;
+        int roleID;
         int infoID;
         string infoVoornaam;
         string infoAchternaam;
@@ -16,21 +21,65 @@ namespace overheid
         string infoPostcode;
         string infoPlaats;
 
-        int userId;
-        string userName;
-        string userPass;
-        string userMail;
-        int roleID;
-        
-        string query = "SELECT * FROM user INNER JOIN ";
-        private int myVar;
-
-        public int MyProperty
+        public int UserId
         {
-            get { return myVar; }
-            set { myVar = value; }
+            get
+            {
+                return userId;
+            }
+            set
+            {
+                userId = value;
+            }
         }
 
+        public string UserName
+        {
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                userName = value;
+            }
+        }
+
+        public string UserPass
+        {
+            get
+            {
+                return userPass;
+            }
+            set
+            {
+                userPass = value;
+            }
+        }
+
+        public string Usermail
+        {
+            get
+            {
+                return userMail;
+            }
+            set
+            {
+                userMail = value;
+            }
+        }
+
+        public int RoleID
+        {
+            get
+            {
+                return roleID;
+            }
+            set
+            {
+                roleID = value;
+            }
+        }
         //dit worden echt tering veel fields
         public int InfoID
         {
@@ -119,65 +168,7 @@ namespace overheid
             }
         }
 
-        public int UserId
-        {
-            get
-            {
-                return userId;
-            }
-            set
-            {
-                userId = value;
-            }
-        }
-
-        public string UserName
-        {
-            get
-            {
-                return userName;
-            }
-            set
-            {
-                userName = value;
-            }
-        }
-
-        public string UserPass
-        {
-            get
-            {
-                return userPass;
-            }
-            set
-            {
-                userPass = value;
-            }
-        }
-
-        public string Usermail
-        {
-            get
-            {
-                return userMail;
-            }
-            set
-            {
-                userMail = value;
-            }
-        }
-
-        public int RoleID
-        {
-            get
-            {
-                return roleID;
-            }
-            set
-            {
-                roleID = value;
-            }
-        }
+       
 
         
     }

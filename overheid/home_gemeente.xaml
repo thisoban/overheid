@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="home_gemeente" Height="450" Width="800">
     <Grid>
-        <Button x:Name="logoutBtn" Content="uitloggen" HorizontalAlignment="Left" Margin="682,10,0,0" VerticalAlignment="Top" Width="83" Height="35"/>
-        <DataGrid HorizontalAlignment="Left" Height="256" Margin="10,94,0,0" VerticalAlignment="Top" Width="755"/>
-        <Button x:Name="toestaanBtn" Content="Button" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="98" Height="37"/>
-        <Button x:Name="nottoestaanBtn" Content="Button" HorizontalAlignment="Left" Margin="162,30,0,0" VerticalAlignment="Top" Width="95" Height="37"/>
+        <Button x:Name="logoutBtn" Content="uitloggen" HorizontalAlignment="Left" Margin="682,10,0,0" VerticalAlignment="Top" Width="83" Height="35" Click="LogoutBtn_Click"/>
+        <DataGrid x:Name="datagrid1" HorizontalAlignment="Left" Height="256" Margin="10,94,0,0" VerticalAlignment="Top" Width="755"/>
+        <Button x:Name="toestaanBtn" Content="toestaan verhuizing" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="130" Height="37" Click="ToestaanBtn_Click"/>
+        <Button x:Name="nottoestaanBtn" Content="niet toegestaan verhuizing" HorizontalAlignment="Left" Margin="162,30,0,0" VerticalAlignment="Top" Width="173" Height="37"/>
+        <Button x:Name="vernieuwenBtn" Content="vernieuwen" HorizontalAlignment="Left" Margin="429,30,0,0" VerticalAlignment="Top" Width="88" Height="37" Click="VernieuwenBtn_Click"/>
 
     </Grid>
 </Window>
